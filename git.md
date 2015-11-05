@@ -9,6 +9,7 @@ Remotes
 
 ### Fetch changes to branch from a remote repository
 Fetch synchronizes origin/master with whatever's on the remote repository: don't forget that this is not automatic and it will not effect your local master branch, it just syncs up origin/master (which is supposed to be a copy of the remote repo)
+
 **git fetch origin** // if you only have one remote repository, can abbreviate to **git fetch**
 
 ### Basic fetch guidelines:
