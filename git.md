@@ -52,7 +52,7 @@ will return all the changes in the working directory. Use
 to return changes in the staging area  
 
 If you need the lines to wrap, use option for the less command:  
-**+S<enter/return key>**  
+**plus-key capital-S enter-key**  
 
 See the changes on the same line, differentiated with colors:  
 **git diff --color-words filename**  
@@ -115,7 +115,7 @@ So you type
 and you see that there's a remote branch you want to work with  
 Since you can't check out remote branches directly (git doesn't want you messing with them)  
 BUT you can create a branch from them that you then work with  
-**git branch my-interesting-branch HEAD **  
+**git branch my-interesting-branch HEAD**  
 earlier you'd have chosen HEAD because that points to the default, master branch  
 but now it's some other branch so you do this:  
 **git branch my-interesting-branch origin/interesting-branch**  
@@ -178,7 +178,7 @@ like the changes?
 now everyone has the same stuff for new_feature branch  
 ready to fold it back into the master branch:  
 **git checkout master**  
-**git fetch  
+**git fetch**  
 **git merge origin/master**  
 **git merge new_feature**  
 **git push**  
