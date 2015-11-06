@@ -61,7 +61,45 @@ See the changes on the same line, differentiated with colors:
 
 Undo
 ----
+### Reverting to HEAD's version of a file
+**git checkout -- filename**  
 
+### Making a change to your last commit
+This will only work if it you want to change the commit that HEAD points to, like if you forgot to add a modified file that should be part of the patch, or if you wanted to change the commit message, etc. Since it has to be the commit that HEAD is pointing to, if someone else made an additional commit in the interim, this won't work. Git doesn't want you to break the chain of SHA's.
+Stage any file changes then use  
+**git commit --amend -m "new message"**
+
+### Changing a commit that is no longer at HEAD
+If, like pointed out above, the commit you want to change is no longer at the HEAD, it's best to just create a brand new commit with the changes you wanted:
+**git log SHA-from-commit-you-want-to-revert-to**  
+**git checkout SHA-from-commit-you-want-to-revert-to -- filename**  
+**git diff --staged**  
+**git commit -m "This commit reverts commit SHA-from-commit-you-want-to-revert-to**  
+
+OR you could use the revert command
+**git revert SHA-from-commit-you-want-to-revert-to**  
+(you could also use the -m to make it a 2 step process, that way you'll be commit it with a message)
+
+However, if you have a really complex situation, you'll probably need to use merge.
+
+### Undoing many commits with reset
+To place HEAD where you want it, use reset. But proceed with caution, it's very dangerous!
+3 options:
+1) --soft (only changes master, not staging or working)
+2) --mixed (is the default, it changes master and staging, not working)
+3) --hard (changes all 3)
+If you're using reset, it's a good idea to first save the log output in case you need to refer back to those SHA's you wiped out.
+To do a reset, start by checking HEAD's SHA:
+**cat .git/refs/heads/master**  
+(missing some notes here?)
+**git show SHA**  
+to see the changes
+
+### Remove all untracked files from working directory
+but not from staging index. Use a test run to see what will be wiped out:
+**git clean -n**  
+then you can do it for real:
+**git clean -f**  
 
 
 
