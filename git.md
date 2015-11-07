@@ -101,10 +101,26 @@ but not from staging index. Use a test run to see what will be wiped out:
 then you can do it for real:
 **git clean -f**  
 
-
-
 Branches
 --------
+### Creating new branches and switching to them
+branches are easy to work with in Git, you just switch the context of your working repo from master to another branch instantly
+To create a new branch:  
+**git branch new-branch-name**  
+To see all branches:
+**git branch**  
+using no flag shows you just the branches you have created/cloned, -a will show you all branches in the repo
+To switch branches:
+**git checkout new-branch-name**  
+To create a branch and simultaneously switch to it:
+**git checkout -b new-branch-name**
+Remember that checkout is also used to revert a file:
+**git checkout -- filename**
+Important: when you create a new branch, pay attention to which branch you're currently on--you could either be branching off of master or some other branch
+
+### To see the log for all branches
+**git log --graph --oneline --decorate --all**  
+Note: git won't let you checkout a different branch if your working copy is not clean--you'll either have to commit or stash your changes (see next section for stashing)
 
 
 Stashing
